@@ -6,31 +6,13 @@
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 export namespace Components {
-    interface MyComponent {
-        /**
-          * The first name
-         */
-        "first": string;
-        /**
-          * The last name
-         */
-        "last": string;
-        /**
-          * The middle name
-         */
-        "middle": string;
-    }
     interface RavenHls {
-        "hls": string;
+        "autoplay": boolean;
+        "src": string | null;
+        "title": string;
     }
 }
 declare global {
-    interface HTMLMyComponentElement extends Components.MyComponent, HTMLStencilElement {
-    }
-    var HTMLMyComponentElement: {
-        prototype: HTMLMyComponentElement;
-        new (): HTMLMyComponentElement;
-    };
     interface HTMLRavenHlsElement extends Components.RavenHls, HTMLStencilElement {
     }
     var HTMLRavenHlsElement: {
@@ -38,30 +20,16 @@ declare global {
         new (): HTMLRavenHlsElement;
     };
     interface HTMLElementTagNameMap {
-        "my-component": HTMLMyComponentElement;
         "raven-hls": HTMLRavenHlsElement;
     }
 }
 declare namespace LocalJSX {
-    interface MyComponent {
-        /**
-          * The first name
-         */
-        "first"?: string;
-        /**
-          * The last name
-         */
-        "last"?: string;
-        /**
-          * The middle name
-         */
-        "middle"?: string;
-    }
     interface RavenHls {
-        "hls"?: string;
+        "autoplay"?: boolean;
+        "src"?: string | null;
+        "title"?: string;
     }
     interface IntrinsicElements {
-        "my-component": MyComponent;
         "raven-hls": RavenHls;
     }
 }
@@ -69,7 +37,6 @@ export { LocalJSX as JSX };
 declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
-            "my-component": LocalJSX.MyComponent & JSXBase.HTMLAttributes<HTMLMyComponentElement>;
             "raven-hls": LocalJSX.RavenHls & JSXBase.HTMLAttributes<HTMLRavenHlsElement>;
         }
     }
